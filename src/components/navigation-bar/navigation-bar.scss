@@ -1,0 +1,10 @@
+@import "../../variables";
+
+.navigation-bar {
+  display: flex;
+  background-color: $PRIMARY_COLOR;
+
+  &_content {
+    flex-basis: 90%;
+  }
+}

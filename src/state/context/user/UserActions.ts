@@ -1,5 +1,5 @@
 import {User} from "../../model/User";
-import {AsyncDataStateEnum} from "../../model/UiStates";
+import {AsyncDataStateEnum} from "../../UiStates";
 
 export enum UserActionsEnum {
     UPDATE_USER_DATA = "UPDATE_USER",

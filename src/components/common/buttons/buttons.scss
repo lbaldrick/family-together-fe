@@ -1,0 +1,19 @@
+.tile-button {
+  display: flex;
+  height: 5em;
+  background: blue;
+  width: 15em;
+  align-content: center;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .5;
+  }
+
+  &_lbl {
+    margin: auto;
+    color: white;
+    font-size: 24px;
+  }
+}

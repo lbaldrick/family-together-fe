@@ -1,7 +1,7 @@
 import React from "react";
-import {useAuth0} from "../Auth";
+import {useAuth0} from "../../../Auth";
 
-const NavBar = () => {
+const LoginButton = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -17,4 +17,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default LoginButton;

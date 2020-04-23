@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d055378e-0e5c-4204-a35d-18a0229422f4" name="Default Changelist" comment="" />
+    <list default="true" id="d055378e-0e5c-4204-a35d-18a0229422f4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Routes.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/buttons/StandardButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/buttons/TileButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/buttons/buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/buttons/login-button.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/drawer/Drawer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/drawer/drawer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/dropdowns/Dropdown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/form/FormPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/form/StandardForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/form/form.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/inputs/InputType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/inputs/ValueInput.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/family-creation/FamilyCreation.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/family-setup/FamilySetup.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/family-setup/family-setup.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/MainLayout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/MainLayoutWithSideMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/layout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/navigation-bar/NavigationBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/navigation-bar/navigation-bar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/context/families/FamiliesActions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/context/families/FamiliesContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state/model/Family.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/buttons/LoginButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/create-account/CreateAccount.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/create-account/create-account.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/mocks/user.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/context/user/UserActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/context/user/UserActions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/context/user/UserContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/context/user/UserContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/model/UiStates.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/UiStates.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/model/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/model/User.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1a4sEU0rywFy8XFizSmOBscKdK0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -15,6 +59,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="LET" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -31,6 +76,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\micha\WebstormProjects\family-together-fe\src\components\common" />
+      <recent name="C:\Users\micha\WebstormProjects\family-together-fe\src\state" />
       <recent name="C:\Users\micha\WebstormProjects\family-together-fe\src\state\context\user" />
     </key>
   </component>
@@ -62,7 +109,9 @@
       <workItem from="1586006097937" duration="11031000" />
       <workItem from="1586349284339" duration="2476000" />
       <workItem from="1586867280625" duration="8589000" />
-      <workItem from="1586879983438" duration="4577000" />
+      <workItem from="1586879983438" duration="45442000" />
+      <workItem from="1587467296818" duration="14012000" />
+      <workItem from="1587646625205" duration="2010000" />
     </task>
     <servers />
   </component>
@@ -74,22 +123,42 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="91" key="#ESLint/0.0.1536.864@0.0.1536.864" timestamp="1586870542282" />
-    <state x="519" y="255" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586009090823">
+    <state x="519" y="255" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587066094093">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="519" y="255" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1586009090823" />
+    <state x="519" y="255" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1587066094093" />
     <state x="541" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1586880366835">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="541" y="228" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1586880366835" />
-    <state x="534" y="220" key="FileChooserDialogImpl" timestamp="1586874274282">
+    <state x="163" y="238" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587066422758">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="534" y="220" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1586874274282" />
-    <state x="439" y="180" width="631" height="568" key="find.popup" timestamp="1586872542507">
+    <state x="163" y="238" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1587066422758" />
+    <state x="534" y="220" key="FileChooserDialogImpl" timestamp="1587473777875">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="439" y="180" width="631" height="568" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1586872542507" />
+    <state x="534" y="220" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1587473777875" />
+    <state width="915" height="200" key="GridCell.Tab.0.bottom" timestamp="1587646516257">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="915" height="200" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1587646516257" />
+    <state width="915" height="200" key="GridCell.Tab.0.center" timestamp="1587646516256">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="915" height="200" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1587646516256" />
+    <state width="915" height="200" key="GridCell.Tab.0.left" timestamp="1587646516256">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="915" height="200" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1587646516256" />
+    <state width="915" height="200" key="GridCell.Tab.0.right" timestamp="1587646516256">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="915" height="200" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1587646516256" />
+    <state x="439" y="180" width="631" height="568" key="find.popup" timestamp="1587644504816">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="439" y="180" width="631" height="568" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1587644504816" />
     <state x="424" y="197" key="run.anything.popup" timestamp="1586876338382">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -98,5 +167,21 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="416" y="185" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1586009218844" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/Auth.js</url>
+          <line>10</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/Routes.tsx</url>
+          <line>27</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

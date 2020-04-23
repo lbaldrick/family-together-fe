@@ -2,7 +2,7 @@ import * as React from 'react'
 import {UserAction, UserActionsEnum} from "./UserActions";
 import {User} from "../../model/User";
 import {useEffect} from "react";
-import {AsyncDataStateEnum} from "../../model/UiStates";
+import {AsyncDataStateEnum} from "../../UiStates";
 import superagent from "superagent";
 
 type Dispatch = (action: UserAction) => void
@@ -21,9 +21,6 @@ const UserDispatchContext = React.createContext<Dispatch | undefined>(undefined)
 
 const userReducer = (state: State, action: UserAction): State => {
     switch (action.type) {
-        case UserActionsEnum.FETCH_USER_DATA: {
-            return { currentUserAction: UserActionsEnum.FETCH_USER_DATA, currentUserActionState: AsyncDataStateEnum.STARTED, userData: {firstName: action.payload?.firstName}}
-        }
         case UserActionsEnum.UPDATE_USER_DATA: {
             return { userData: {firstName: action.payload?.firstName}}
         }
@@ -64,12 +61,10 @@ const userProvider = ({children}: UserProviderProps): React.ReactNode => {
         )
 };
 
-
-
 const useUserState = (): State => {
     const context = React.useContext(UserStateContext);
     if (context === undefined) {
-        throw new Error('useCountState must be used within a CountProvider')
+        throw new Error('useUserState must be used within a UserProvider')
     }
     return context;
 };
@@ -77,20 +72,24 @@ const useUserState = (): State => {
 const useUserDispatch = (): Dispatch => {
     const context = React.useContext(UserDispatchContext);
     if (context === undefined) {
-        throw new Error('useCountDispatch must be used within a CountProvider')
+        throw new Error('useUserDispatch must be used within a UserProvider')
     }
     return context;
 };
 
-const fetchUser = async (dispatch: Dispatch, userId: string): Promise<null>  => {
+const fetchUser = async (dispatch: Dispatch, userId: string): Promise<void>  => {
     dispatch({type: AsyncDataStateEnum.STARTED});
     try {
-        const updatedUser = await superagent.get('').query({ userId });
-        dispatch({type: AsyncDataStateEnum.COMPLETED_SUCCESS, payload: undefined})
+        const response = await superagent.get('/mocks/user.json').query({ userId });
+        const {id, firstName, lastName} = response.body;
+        dispatch({type: AsyncDataStateEnum.COMPLETED_SUCCESS, payload: {
+                id,
+                firstName,
+                lastName,
+            }})
     } catch (error) {
         dispatch({type: AsyncDataStateEnum.COMPLETED_FAIL})
     }
-    return Promise.resolve(null);
 };
 
-export {userProvider, useUserState, useUserDispatch}
+export {userProvider, useUserState, useUserDispatch, fetchUser}

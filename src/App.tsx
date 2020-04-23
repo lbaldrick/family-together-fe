@@ -1,6 +1,7 @@
 import React from 'react';
-import NavBar from "./components/NavBar";
 import { useAuth0 } from "./Auth";
+import NavigationBar from "./components/navigation-bar/NavigationBar";
+import Routes from "./Routes";
 
  const App = () => {
      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -13,9 +14,7 @@ import { useAuth0 } from "./Auth";
 
     return (
         <div className="App">
-            <header>
-                <NavBar />
-            </header>
+           <Routes />
         </div>
     );
 }
