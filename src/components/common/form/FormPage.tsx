@@ -3,13 +3,13 @@ import {FormField} from "./StandardForm";
 
 export interface FormPageProps {
     header?: string;
-    onFormComplete: (isComplete: boolean) => void;
     formFields: FormField[];
     onValueChanged: (id: string, value: string | number) => void;
 }
 
 const FormPage = (props: FormPageProps): React.ReactElement => {
-    const onChange = (id: string, value: string | number) => (): void => {
+    const onChange = (id: string, value: string | number): void => {
+        console.log('onChange:', value)
         props.onValueChanged(id, value)
     };
 

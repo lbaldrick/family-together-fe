@@ -11,7 +11,8 @@ const ValueInput = (props: InputProps): React.ReactElement => {
 
     //send value up so parent components can have it but parent doesnt handle the value state here
     const onValueChange = (value: string | number): void => {
-        console.log('value:', value)
+        console.log('value:', value);
+        console.log('id:', props.id);
         props.onChange(props.id, value);
         setValue(value);
         if(props.validationFn) {
