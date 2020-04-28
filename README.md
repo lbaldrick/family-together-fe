@@ -10,3 +10,4 @@ Application contains the following:
 - component library written from scratch including a configuration driven form component to allow for easy building of multi page forms containing various input components. - in progress
 - a calendar component written from scratch allowing for events and scheduling to be recorded by the user - not not started 
 - a messaging component allowing users to message members of the family - not started
+- implement integration tests using cypressjs - not started
