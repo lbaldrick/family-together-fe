@@ -53,23 +53,17 @@ export const FormList = (props: FormListProps): React.ReactElement => {
         setValues(newValues);
 
         const validValues = Object.values(newValues).filter(({isValid}) => isValid);
-        console.log('newValues ', newValues)
-        console.log('validValues ', validValues)
-        console.log('props.formFields ', props.formFields)
         setFormComplete(validValues.length === props.formFields.length)
     };
 
     const onDeleteItem = (itemIndex: number): void => {
-        console.log('itemIndex', itemIndex);
         items.splice(itemIndex, 1);
         setItems(items.concat([]));
         props.onDelete(props.id, items);
     };
 
     const onAddItem = (): void => {
-        console.log('new values: ', values)
         const newItems = items.concat([values]);
-        console.log('new items: ', newItems)
         setItems(newItems);
         props.onAdd(props.id, newItems);
     };

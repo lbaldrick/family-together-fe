@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d055378e-0e5c-4204-a35d-18a0229422f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/form/FormList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/inputs/input.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/family-creation/family-creation.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/buttons/StandardButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/buttons/StandardButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/buttons/buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/buttons/buttons.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/drawer/drawer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/drawer/drawer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/form/FormPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/form/FormPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/form/StandardForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/form/StandardForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/form/form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/form/form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/inputs/InputType.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/inputs/ValueInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/inputs/ValueInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/family-creation/FamilyCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/family-creation/FamilyCreation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/form/FormList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/form/FormList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +74,7 @@
       <workItem from="1586867280625" duration="8589000" />
       <workItem from="1586879983438" duration="45442000" />
       <workItem from="1587467296818" duration="14012000" />
-      <workItem from="1587646625205" duration="46419000" />
+      <workItem from="1587646625205" duration="47965000" />
     </task>
     <servers />
   </component>
@@ -187,10 +174,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="236" y="145" width="756" height="662" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1587986661025" />
-    <state x="439" y="180" width="631" height="568" key="find.popup" timestamp="1587644504816">
+    <state x="439" y="180" width="631" height="568" key="find.popup" timestamp="1588085078003">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="439" y="180" width="631" height="568" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1587644504816" />
+    <state x="439" y="180" width="631" height="568" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1588085078003" />
     <state x="424" y="197" key="run.anything.popup" timestamp="1587999715951">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

@@ -112,8 +112,6 @@ const StandardForm = (props: FormProps): React.ReactElement => {
             formFieldsState[id] = {value, isValid: isFieldValid};
             const pageField = formPagesState[currentIndex].find(pageField => pageField.id === id);
 
-            console.log('onValueChanged id', id)
-            console.log('onValueChanged value', value)
             if (Array.isArray(pageField)) {
 
                 for (let x = 0; x < pageField.length; x++) {
@@ -123,7 +121,6 @@ const StandardForm = (props: FormProps): React.ReactElement => {
                     }
                 }
             } else {
-                console.log('pageField before', pageField);
                 if ( pageField && instanceOfFormFieldType(pageField) && (typeof value === 'string' || typeof value === 'number') ) {
                     pageField.initialValue = value;
                 }
