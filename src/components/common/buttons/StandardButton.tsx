@@ -16,8 +16,13 @@ const StandardButton = ({ id,
                         isSecondary= false,
                         isDisabled = false}: StandardButtonProps) => {
 
-    return <div className={`standard-button ${isSecondary} ? 'secondary' : 'primary'`}>
-        <button className={"standard-button_btn"} onClick={(): void => onClick(id)} disabled={isDisabled}>
+    return <div className={`standard-button`}>
+        <button className={`standard-button_btn ${isSecondary ? 'standard-button_btn--secondary' : 'standard-button_btn--primary'}`} onClick={(event): void => {
+            console.log('btn clicked', id);
+            event.stopPropagation();
+            event.preventDefault();
+            onClick(id)
+        }} disabled={isDisabled}>
             {label}
         </button>
     </div>

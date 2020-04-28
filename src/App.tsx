@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAuth0 } from "./Auth";
-import NavigationBar from "./components/navigation-bar/NavigationBar";
 import Routes from "./Routes";
 
  const App = () => {
@@ -13,7 +12,7 @@ import Routes from "./Routes";
     }
 
     return (
-        <div className="App">
+        <div className="App" style={ {position: 'absolute', bottom: 0, top: 0, left: 0, right: 0, overflow: 'hidden',   fontSize: '16px', fontFamily: 'Candara, sans-serif'}}>
            <Routes />
         </div>
     );

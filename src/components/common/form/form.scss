@@ -1,0 +1,53 @@
+.form {
+  margin: 1em;
+  height: 100%;
+  position: relative;
+
+  &_footer  {
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 4em;
+
+    .standard-button {
+      margin-left: 1em;
+    }
+  }
+
+  .form-list {
+    padding: 2em;
+    border: #14a76c 2px solid;
+
+    &_header {
+      text-decoration-line: underline;
+      text-transform: uppercase;
+    }
+
+    &_items {
+      overflow: auto;
+      max-height: 16em;
+      margin-top: 1em;
+
+      &_item {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin: .5em 0 .5em 0;
+
+        &_values {
+          flex: 1;
+          display: flex;
+          &_value {
+            min-width: 5em;
+          }
+
+          .standard-button {
+            margin-right: 1em;
+          }
+
+        }
+      }
+    }
+  }
+}

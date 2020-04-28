@@ -1,0 +1,15 @@
+.value-input {
+  margin: 1em 0 1em 0;
+
+  &_input {
+    border: none;
+    border-bottom: #c7b5b5 solid 1px;
+    font-size: 24px;
+    margin: .2em 0 .2em 0;
+  }
+
+  &_required {
+    color: red;
+    font-size: .7em;
+  }
+}

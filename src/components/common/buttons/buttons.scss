@@ -31,12 +31,20 @@
     border: none;
     transition: all 0.4s ease 0s;
 
-    .primary {
+    &--primary {
       background-color: $PRIMARY_COLOR_BTN;
     }
 
-    .secondary {
-      background-color: $PRIMARY_COLOR_BTN;
+    &--secondary {
+      background-color: $SECONDARY_COLOR_BTN;
+    }
+
+    &[disabled] {
+      background-color: darkgray;
+
+      &:hover {
+        cursor: not-allowed;
+      }
     }
 
     &:hover {
