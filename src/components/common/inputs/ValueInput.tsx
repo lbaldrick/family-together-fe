@@ -25,9 +25,9 @@ const ValueInput = (props: InputProps): React.ReactElement => {
     //handle state here to stop rerender
     const [value, setValue] = useState<number|string>(() => {
         if (props.initialValue) {
-            return props.initialValue
+            return props.initialValue;
         } else {
-            return props.type === 'text' ? '' : 0
+            return props.type === 'number' ? 0 : '';
         }
     });
     const [isValid, setIsValid] = useState<boolean | undefined>(undefined);

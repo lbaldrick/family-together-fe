@@ -3,6 +3,21 @@
   height: 100%;
   position: relative;
 
+  &_step-header {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1em;
+    border-bottom: #14A76C solid 1px;
+    padding-bottom: 1em;
+
+    &_label {
+       &.--active {
+         font-weight: bold;
+         color: #1c892a;
+       }
+    }
+  }
+
   &_footer  {
     margin: 1em;
     display: flex;

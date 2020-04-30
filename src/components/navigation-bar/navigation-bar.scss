@@ -3,8 +3,11 @@
 .navigation-bar {
   display: flex;
   background-color: $PRIMARY_COLOR;
+  align-items: center;
+  padding: 1em;
 
   &_content {
-    flex-basis: 90%;
+    flex-basis: 80%;
+    padding: 1em;
   }
 }

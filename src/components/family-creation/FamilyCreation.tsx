@@ -18,51 +18,76 @@ const formPages: (FormFieldType | FormListType)[][] = [
 
         },
         {
-            id: 'children',
-            component: FormList,
-            header: 'Enter children\'s details:',
-            formFields: [
-                {
-                    id: 'childFirstName',
-                    component: ValueInput,
-                    isRequired: true,
-                    type: "text",
-                    placeholder: "Enter First Name",
-                    objectType: 'FormField'
-
-                },
-                {
-                    id: 'childLastName',
-                    component: ValueInput,
-                    isRequired: true,
-                    type: "text",
-                    placeholder: "Enter Last Name",
-                    objectType: 'FormField',
-
-                },
-                {
-                    id: 'childDob',
-                    component: ValueInput,
-                    isRequired: true,
-                    type: "text",
-                    placeholder: "Enter Date of Birth",
-                    objectType: 'FormField',
-
-                },
-            ],
-            objectType: 'FormList',
-        }
-    ],
-    [
-        {
-            id: 'familyName',
+            id: 'primaryParentFirstName',
             component: ValueInput,
             isRequired: true,
             type: "text",
-            placeholder: "Enter Family Name",
+            placeholder: "Enter Your First Name",
             objectType: 'FormField'
 
         },
+        {
+            id: 'primaryParentLastName',
+            component: ValueInput,
+            isRequired: true,
+            type: "text",
+            placeholder: "Enter Your Last Name",
+            objectType: 'FormField',
+
+        },
+        {
+            id: 'primaryParentDob',
+            component: ValueInput,
+            isRequired: true,
+            type: "date",
+            placeholder: "Enter Date of Birth",
+            objectType: 'FormField',
+
+        },
+        {
+            id: 'primaryParentRelationshipToChildren',
+            component: Dropdown,
+            isRequired: true,
+            type: "text",
+            placeholder: "Select relationship",
+            items: [
+                {
+                    id: FamilyPositionsEnum.MOTHER,
+                    label: "Mother",
+                    value: FamilyPositionsEnum.MOTHER,
+                },
+                {
+                    id: FamilyPositionsEnum.FATHER,
+                    label: "Father",
+                    value: FamilyPositionsEnum.FATHER,
+                },
+                {
+                    id: FamilyPositionsEnum.GRAND_MOTHER,
+                    label: "Grand Mother",
+                    value: FamilyPositionsEnum.GRAND_MOTHER,
+                },
+                {
+                    id: FamilyPositionsEnum.GRAND_FATHER,
+                    label: "Grand Father",
+                    value: FamilyPositionsEnum.GRAND_FATHER,
+                },
+                {
+                    id: FamilyPositionsEnum.AUNT,
+                    label: "Aunt",
+                    value: FamilyPositionsEnum.AUNT,
+                },
+                {
+                    id: FamilyPositionsEnum.UNCLE,
+                    label: "Uncle",
+                    value: FamilyPositionsEnum.UNCLE,
+                }
+            ],
+            objectType: 'FormField',
+
+        },
+
+    ],
+    [
         {
             id: 'children',
             component: FormList,
@@ -127,8 +152,8 @@ const formPages: (FormFieldType | FormListType)[][] = [
                     id: 'dob',
                     component: ValueInput,
                     isRequired: true,
-                    type: "text",
-                    placeholder: "Enter Date of Birth",
+                    type: "date",
+                    placeholder: "Enter Your Date of Birth",
                     objectType: 'FormField',
 
                 },
@@ -185,7 +210,7 @@ const FamilyCreationContainer = (): React.ReactElement => {
 
 const FamilyCreation = (): React.ReactElement => {
     return <div className={"family-creation"}>
-        <StandardForm formPages={formPages} currentFormIndex={0} />
+        <StandardForm stepHeaderLabels={['Your Details', 'Children\'s Details', 'Other Family Member\'s Details']} formPages={formPages} currentFormIndex={0} />
     </div>
 };
 

@@ -3,6 +3,8 @@ import NavigationBar from "../navigation-bar/NavigationBar";
 
 type MainLayoutProps = {
     navigationBar?: React.ReactElement;
+    mainComponent?: React.ReactElement;
+    footerComponent?: React.ReactElement;
 }
 
 const MainLayout = (props: MainLayoutProps): React.ReactElement => {
@@ -14,10 +16,10 @@ const MainLayout = (props: MainLayoutProps): React.ReactElement => {
                 </NavigationBar>
             </div>
             <div className={"main-layout_main"}>
-
+                {props.mainComponent}
             </div>
             <div className={"main-layout_footer"}>
-
+                {props.footerComponent}
             </div>
         </div>
     );

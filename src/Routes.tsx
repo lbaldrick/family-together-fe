@@ -25,10 +25,10 @@ const Routes = () => {
     return  (
         <Router history={history}>
             <Switch>
-                <Route exact path="/"  component={() => <MainLayoutWithSideMenu/>}/>
-                <PrivateRoute path="/authorized" component={() => <FamilySetup/>}/>
-                <PrivateRoute path="/home" component={() => <FamilySetup/>}/>
-                <PrivateRoute path="/create-family" component={() => <FamilyCreationContainer/>}/>
+                <Route exact path="/"  component={() => <MainLayout mainComponent={<FamilyCreationContainer/>}/>}/>
+                <PrivateRoute path="/authorized" component={() => <MainLayout mainComponent={<FamilyCreationContainer/>}/>}/>
+                <PrivateRoute path="/home" component={() => <FamilyCreationContainer/>}/>
+                <PrivateRoute path="/create-family" component={() => <MainLayout mainComponent={<FamilyCreationContainer/>}/>}/>
                 <PrivateRoute path="/messages" component={getPublic}/>
             </Switch>
         </Router>
