@@ -9,7 +9,7 @@ const FAMILY_CREATION_BTN_LBL = "CREATE FAMILY";
 
 const FamilySetup = (): React.ReactElement => {
 
-    const onFamilyCreation = (id: string ): void => {
+    const onFamilyCreation = (id: string): void => {
         history.push('/create-family');
     };
 

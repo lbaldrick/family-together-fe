@@ -5,6 +5,8 @@ export enum FamilyPositionsEnum {
     GRAND_FATHER = "GRAND_FATHER",
     STEP_FATHER = "STEP_FATHER",
     STEP_MOTHER = "STEP_MOTHER",
+    AUNT = "AUNT",
+    UNCLE = "UNCLE",
     DAUGHTER = "DAUGHTER",
     SON = "SON",
     GUARDIAN = "GUARDIAN",
@@ -17,6 +19,7 @@ export interface FamilyMember {
     lasName: string;
     dateOfBirth?: number;
     familyPosition: FamilyPositionsEnum;
+    isAdmin?: boolean;
 }
 
 export interface Family {

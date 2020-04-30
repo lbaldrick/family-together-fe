@@ -2,6 +2,12 @@ import React, {useState} from "react";
 import {debounce} from "lodash";
 import "./input.scss";
 
+export interface InputItem {
+    id: string;
+    label: string;
+    value: string | number;
+}
+
 export interface InputProps {
     id: string;
     initialValue?: string | number;
@@ -12,6 +18,7 @@ export interface InputProps {
     validationFn?: (value: string | number) => boolean;
     isRequired: boolean;
     initialValues?: {[key: string]: string | number}[];
+    items?: InputItem[];
 }
 
 const ValueInput = (props: InputProps): React.ReactElement => {

@@ -1,22 +1,42 @@
-import React from 'react';
+import React, {useState, MouseEvent} from 'react';
+import './dropdown.scss';
+import {InputProps} from "../inputs/ValueInput";
 
-interface DropDownItem {
-    id: string;
-    label: string;
-    value: string | number;
-}
+const Dropdown = (props: InputProps): React.ReactElement => {
+    const [value, setValue] = useState(() => {
+        if (props.initialValue) {
+            return props.initialValue;
+        }
 
-interface DropdownProps {
-    items: DropDownItem[];
-    onValueSelected: (id: string, value: string | number) => void;
-}
+        return props.type === 'text' ? '' : 0;
+    });
 
-const Dropdown = (props: DropdownProps): React.ReactElement => {
+    const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+
+    const onChange = (id: string, value: number | string, label: string | number): void => {
+        setValue(label);
+        props.onChange(id, value);
+    };
+
+    const onClick = (event:  MouseEvent): void => {
+        event.stopPropagation();
+        setDropdownOpen(!dropdownOpen);
+    };
+
     return <div className={'dropdown'}>
-        <ul className={'dropdown_items'}>
+        <div className={'dropdown_value'} onClick={onClick}>
+        <input className={'dropdown_value_input'} placeholder={props.placeholder} readOnly={true} value={value} />
+            <div className={`arrow ${dropdownOpen ? 'arrow--down' : ''}`}/>
+        </div>
+        <ul className={`dropdown_list ${!dropdownOpen ? 'dropdown_list--hidden' : '' }`}>
+
             {
-                props.items.map((item) => {
-                    return <li key={item.id} className={'dropdown_items_item'} onClick={() => props.onValueSelected(item.id, item.value)}/>
+                props.items?.map((item) => {
+                    return <li key={item.id}
+                               className={`dropdown_list_item ${item.label === value ? 'dropdown_list_item--selected' : '' }`}
+                               onClick={(): void => onChange(item.id, item.value, item.label)}>
+                        {item.label}
+                    </li>
                 })
             }
         </ul>

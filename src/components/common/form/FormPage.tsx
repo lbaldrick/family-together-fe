@@ -5,7 +5,7 @@ import {FormListItemType} from "./FormList";
 export interface FormPageProps {
     header?: string;
     formFields: (FormFieldType | FormListType)[];
-    onValueChanged: (id: string, value: string | number| FormListItemType[], isValid?: boolean) => void;
+    onValueChanged: (id: string, value: string | number | FormListItemType[], isValid?: boolean) => void;
 }
 
 const FormPage = (props: FormPageProps): React.ReactElement => {
@@ -30,6 +30,7 @@ const FormPage = (props: FormPageProps): React.ReactElement => {
                     type={formField.type}
                     isRequired={formField.isRequired}
                     placeholder={formField.placeholder}
+                    items={formField.items}
                 />}
                 { (formField.objectType === 'FormList') && <formField.component
                     header={formField.header}

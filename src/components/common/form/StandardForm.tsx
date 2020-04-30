@@ -3,7 +3,7 @@ import FormPage from "./FormPage";
 import StandardButton from "../buttons/StandardButton";
 import './form.scss';
 import {FormListItemType, FormListProps} from "./FormList";
-import {InputProps} from "../inputs/ValueInput";
+import {InputItem, InputProps} from "../inputs/ValueInput";
 
 
 
@@ -17,6 +17,7 @@ export interface FormFieldType {
     label?: string;
     placeholder?: string;
     objectType: 'FormField';
+    items?: InputItem[];
 }
 
 export interface FormListType {

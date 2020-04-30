@@ -43,17 +43,20 @@ export const FormList = (props: FormListProps): React.ReactElement => {
     });
 
     const onChange = (id: string, value: number | string, isValid = true): void => {
-        const newValues: FormListItemType = {
-            ...values,
-            [id]: {
-                value,
-                isValid,
-            },
-        };
-        setValues(newValues);
+        if (!Array.isArray(value)) {
+            const newValues: FormListItemType = {
+                ...values,
+                [id]: {
+                    value,
+                    isValid,
+                },
+            };
 
-        const validValues = Object.values(newValues).filter(({isValid}) => isValid);
-        setFormComplete(validValues.length === props.formFields.length)
+            setValues(newValues);
+
+            const validValues = Object.values(newValues).filter(({isValid}) => isValid);
+            setFormComplete(validValues.length === props.formFields.length)
+        }
     };
 
     const onDeleteItem = (itemIndex: number): void => {
@@ -82,6 +85,7 @@ export const FormList = (props: FormListProps): React.ReactElement => {
                         isRequired={formField.isRequired}
                         placeholder={formField.placeholder}
                         validationFn={formField.validationFn}
+                        items={formField.items}
                     />
             </div>)
         })}
