@@ -5,7 +5,7 @@ import './family-creation.scss';
 import {FormList} from "../common/form/FormList";
 import Dropdown from "../common/dropdowns/Dropdown";
 import {FamilyPositionsEnum} from "../../state/model/Family";
-import {saveFamily, useFamiliesDispatch} from "../../state/context/families/FamiliesContext";
+import {FamiliesDispatchContext, FamiliesStateContext, saveFamily} from "../../state/context/families/FamiliesContext";
 
 const formPages: (FormFieldType | FormListType)[][] = [
     [
@@ -212,8 +212,9 @@ const FamilyCreationContainer = (): React.ReactElement => {
 };
 
 const FamilyCreation = (): React.ReactElement => {
+    const familyDispatchContext = React.useContext(FamiliesDispatchContext);
     return <div className={"family-creation"}>
-        <StandardForm onFormFinished={(result: any): void => saveFamily(useFamiliesDispatch, result)}
+        <StandardForm onFormFinished={(result: any): void => familyDispatchContext && saveFamily(familyDispatchContext, result)}
                       stepHeaderLabels={['Your Details', 'Children\'s Details', 'Other Family Member\'s Details']}
                       formPages={formPages}
                       currentFormIndex={0} />

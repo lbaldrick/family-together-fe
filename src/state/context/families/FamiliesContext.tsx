@@ -9,6 +9,8 @@ type Dispatch = (action: FamiliesAction) => void
 export interface State {
     currentFamilyActionState?: AsyncDataStateEnum;
     currentFamily?: Partial<Family>;
+    savingFamilyInProgress?: boolean;
+    savingFamilyFailed?: boolean;
 }
 
 type FamiliesProviderProps = {children: React.ReactNode}
@@ -37,24 +39,7 @@ const familiesReducer = (state: State, action: FamiliesAction): State => {
     }
 };
 
-const useFamiliesState = (): State => {
-    const context = React.useContext(FamiliesStateContext);
-    if (context === undefined) {
-        throw new Error('useCountState must be used within a CountProvider')
-    }
-    return context;
-};
-
-const useFamiliesDispatch = (): Dispatch => {
-    const context = React.useContext(FamiliesDispatchContext);
-    if (context === undefined) {
-        throw new Error('useCountDispatch must be used within a CountProvider')
-    }
-    return context;
-};
-
 const fetchFamily = async (dispatch: Dispatch): Promise<void>  => {
-    dispatch({type: AsyncDataStateEnum.STARTED});
     try {
         const response = await superagent.get('/mocks/family.json');
         const {id} = response.body;
@@ -68,7 +53,6 @@ const fetchFamily = async (dispatch: Dispatch): Promise<void>  => {
 
 //TODO save to database and make this async
 const saveFamily = (dispatch: Dispatch, payload: any): void => {
-    dispatch({type: AsyncDataStateEnum.STARTED});
     try {
         dispatch({type: AsyncDataStateEnum.COMPLETED_SUCCESS, payload})
     } catch (error) {
@@ -89,4 +73,4 @@ const FamiliesProvider = ({children}: FamiliesProviderProps): React.ReactElement
     )
 };
 
-export {FamiliesProvider, useFamiliesState, useFamiliesDispatch, fetchFamily, saveFamily}
+export {FamiliesProvider, saveFamily, FamiliesStateContext, FamiliesDispatchContext}

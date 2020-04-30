@@ -67,7 +67,8 @@ const StandardForm = (props: FormProps): React.ReactElement => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [pagesComplete, setPagesComplete] = useState<boolean[]>(() => props.formPages.map(() => false));
     const [allPagesComplete, setAllPagesComplete] = useState<boolean>(() => pagesComplete.filter(pageComplete => pageComplete).length === props.formPages.length);
-    const [formPagesState, setFormPagesState] = useState<(FormFieldType | FormListType)[][]>(() => props.formPages.map((page) => page.concat([])));
+    //Dont use the  state set method to update the formPagesState as dont want to cause a rerender everytime
+    const [formPagesState] = useState<(FormFieldType | FormListType)[][]>(() => props.formPages.map((page) => page.concat([])));
 
     useEffect(() => {
         //TODO - get rid of this and flatten only on save as we shouldnt need to have it till then and shouldnt need to have so much state to keep insync
@@ -123,13 +124,9 @@ const StandardForm = (props: FormProps): React.ReactElement => {
 
             }
 
-            const unPopulatedFields = Object.values(formFieldsState).filter((formFieldValue) => {
-                if (Array.isArray(formFieldValue)) {
-                    return !formFieldValue.filter(({isValid}) => !isValid).length;
-                }
-
-                return !formFieldValue.isValid;
-            });
+            const unPopulatedFields = formPagesState[currentIndex]
+                .map(({id}) => id)
+                .filter((id) => !formFieldsState[id].isValid);
 
             if(!unPopulatedFields.length) {
                 onFormPageCompleted();
@@ -155,7 +152,6 @@ const StandardForm = (props: FormProps): React.ReactElement => {
     };
 
     const onFinish = (): void => {
-        console.log('on finish', formFieldsState);
         props.onFormFinished(formFieldsState); // save the form data
     };
 
@@ -166,7 +162,7 @@ const StandardForm = (props: FormProps): React.ReactElement => {
         </div>
         <div className={"form_footer"}>
             {props.formPages.length > 1 && !!currentIndex && <StandardButton id={"previousBtn"} label={'Previous'} onClick={onPreviousPage} />}
-            {props.formPages.length > 1 && currentIndex < props.formPages.length -1 ? <StandardButton id={"nextBtn"} label={'Next'} isDisabled={pagesComplete[currentIndex]} onClick={onNextPage} />  :
+            {props.formPages.length > 1 && currentIndex < props.formPages.length -1 ? <StandardButton id={"nextBtn"} label={'Next'} isDisabled={!pagesComplete[currentIndex]} onClick={onNextPage} />  :
                 <StandardButton id={"finishBtn"} label={'Finish'} isDisabled={!allPagesComplete} onClick={onFinish} />}
         </div>
     </div>
