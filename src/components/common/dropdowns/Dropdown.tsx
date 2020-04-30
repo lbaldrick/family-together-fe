@@ -15,7 +15,7 @@ const Dropdown = (props: InputProps): React.ReactElement => {
 
     const onChange = (id: string, value: number | string, label: string | number): void => {
         setValue(label);
-        props.onChange(id, value);
+        props.onChange(id, value, true);
     };
 
     const onClick = (event:  MouseEvent): void => {

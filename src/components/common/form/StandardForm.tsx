@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FormPage from "./FormPage";
 import StandardButton from "../buttons/StandardButton";
 import './form.scss';
@@ -61,45 +61,42 @@ const createStepHeader = (stepHeaderLabels: string[], currentIndex: number, onCl
     </div>
 };
 
+let formFieldsState: FormFieldState;
+
 const StandardForm = (props: FormProps): React.ReactElement => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [pagesComplete, setPagesComplete] = useState<boolean[]>(() => props.formPages.map(() => false));
     const [allPagesComplete, setAllPagesComplete] = useState<boolean>(() => pagesComplete.filter(pageComplete => pageComplete).length === props.formPages.length);
+    const [formPagesState, setFormPagesState] = useState<(FormFieldType | FormListType)[][]>(() => props.formPages.map((page) => page.concat([])));
 
-    //copy the formPages as we update this with ui changes but we dont want this on the component state causing unnecessary rerenders
-    const formPagesState: (FormFieldType | FormListType)[][]  = props.formPages.map((page) => page.concat([]));
+    useEffect(() => {
+        //TODO - get rid of this and flatten only on save as we shouldnt need to have it till then and shouldnt need to have so much state to keep insync
+        //flatten the ui structure so the data can be saved as nicely
+        formFieldsState = (() => {
+            return props.formPages.flat().reduce((accumulator, formField) => {
 
-    //TODO - get rid of this and flatten only on save as we shouldnt need to have it till then and shouldnt need to have so much state to keep insync
-    //flatten the ui structure so the data can be saved as nicely
-    const formFieldsState: FormFieldState = (() => {
-        return props.formPages.flat().reduce((accumulator, formField) => {
+                if (formField.objectType === 'FormField') {
+                    return {
+                        ...accumulator,
+                        [formField.id]: {
+                            value: formField.initialValue,
+                            isValid: !formField.isRequired
+                        }
+                    };
+                } else {
+                    return {
+                        ...accumulator,
+                        [formField.id]: {
+                            value: formField.initialValue,
+                        }
+                    };
 
-            if (formField.objectType === 'FormField') {
-                return {
-                    ...accumulator,
-                    [formField.id]: {
-                        value: formField.initialValue,
-                        isValid: !formField.isRequired
-                    }
-                };
-            } else {
-                const values = formField.formFields.map((field) => {
-                   return {
-                       value: field.initialValue,
-                       isValid: !field.isRequired
-                   };
-                });
+                }
+            }, {})
+        })();
+    }, []);
 
-                return {
-                    ...accumulator,
-                    [formField.id]: {
-                        value: values,
-                    }
-                };
 
-            }
-        }, {})
-    })();
 
     const onFormPageCompleted = (): void => {
         const newPagesComplete = pagesComplete.concat([]);
@@ -112,20 +109,27 @@ const StandardForm = (props: FormProps): React.ReactElement => {
 
     const onValueChanged = (id: string, value: string | number | FormListItemType[], isValid?: boolean): void => {
             const isFieldValid = isValid === undefined ? true : isValid;
-            formFieldsState[id] = {value, isValid: isFieldValid};
             const pageField = formPagesState[currentIndex].find(pageField => pageField.id === id);
 
             if (pageField && Array.isArray(value)) {
+                formFieldsState[id] = {value, isValid: true}; // asssume that the item list is valid as shouldnt be able to add to list if not valid
                 pageField.initialValue = value;
 
             } else {
                 if ( pageField && instanceOfFormFieldType(pageField) && (typeof value === 'string' || typeof value === 'number') ) {
+                    formFieldsState[id] = {value, isValid: isFieldValid};
                     pageField.initialValue = value;
                 }
 
             }
 
-            const unPopulatedFields = Object.values(formFieldsState).filter(({isValid}) => isValid);
+            const unPopulatedFields = Object.values(formFieldsState).filter((formFieldValue) => {
+                if (Array.isArray(formFieldValue)) {
+                    return !formFieldValue.filter(({isValid}) => !isValid).length;
+                }
+
+                return !formFieldValue.isValid;
+            });
 
             if(!unPopulatedFields.length) {
                 onFormPageCompleted();
@@ -158,7 +162,7 @@ const StandardForm = (props: FormProps): React.ReactElement => {
     return <div className={"form"}>
         { props.stepHeaderLabels && createStepHeader(props.stepHeaderLabels, currentIndex, onChangePage) }
         <div className={"form_page"}>
-            {<FormPage  formFields={formPagesState[currentIndex]} onValueChanged={onValueChanged} />}
+            {formPagesState[currentIndex] && <FormPage  formFields={formPagesState[currentIndex]} onValueChanged={onValueChanged} />}
         </div>
         <div className={"form_footer"}>
             {props.formPages.length > 1 && !!currentIndex && <StandardButton id={"previousBtn"} label={'Previous'} onClick={onPreviousPage} />}

@@ -14,8 +14,8 @@ export interface FormListProps {
 
 export type FormListItemType = {
     [key: string]: {
-        value: string |  number;
-        isValid?: boolean;
+        value: string | number;
+        isValid: boolean;
     };
 }
 
@@ -44,6 +44,7 @@ export const FormList = (props: FormListProps): React.ReactElement => {
     });
 
     const onChange = (id: string, value: number | string, isValid = true): void => {
+        console.log('VALUE', value)
         if (!Array.isArray(value)) {
             const newValues: FormListItemType = {
                 ...values,
@@ -53,6 +54,7 @@ export const FormList = (props: FormListProps): React.ReactElement => {
                 },
             };
 
+            console.log(newValues)
             setValues(newValues);
 
             const validValues = Object.values(newValues).filter(({isValid}) => isValid);
@@ -68,6 +70,7 @@ export const FormList = (props: FormListProps): React.ReactElement => {
 
     const onAddItem = (): void => {
         const newItems = items.concat([values]);
+        console.log('newItems', newItems)
         setItems(newItems);
         props.onAdd(props.id, newItems);
     };
