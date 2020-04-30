@@ -47,11 +47,11 @@ function instanceOfFormFieldType(object: any): object is FormFieldType {
 }
 
 
-const createStepHeader = (stepHeaderLabels: string[], currentIndex: number): React.ReactElement => {
+const createStepHeader = (stepHeaderLabels: string[], currentIndex: number, onClick: (index: number) => void): React.ReactElement => {
     return <div className={"form_step-header"}>
         {
             stepHeaderLabels.map((lbl, index) => {
-                return <div key={lbl + index} className={`form_step-header_label ${currentIndex === index ? "--active" : ""}`}>
+                return <div key={lbl + index} className={`form_step-header_label ${currentIndex === index ? "--active" : ""}`} onClick={(): void => onClick(index)}>
                     {lbl}
                 </div>
             })
@@ -149,12 +149,16 @@ const StandardForm = (props: FormProps): React.ReactElement => {
         }
     };
 
+    const onChangePage = (index: number): void => {
+        setCurrentIndex(index);
+    };
+
     const onFinish = (): void => {
         console.log("Finished"); // save the form data
     };
 
     return <div className={"form"}>
-        { props.stepHeaderLabels && createStepHeader(props.stepHeaderLabels, currentIndex) }
+        { props.stepHeaderLabels && createStepHeader(props.stepHeaderLabels, currentIndex, onChangePage) }
         <div className={"form_page"}>
             {<FormPage  formFields={formPagesState[currentIndex]} onValueChanged={onValueChanged} />}
         </div>
