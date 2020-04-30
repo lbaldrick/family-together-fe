@@ -14,7 +14,6 @@ const FormPage = (props: FormPageProps): React.ReactElement => {
     };
 
     const onDeleteOrAddItem = (id: string, items: FormListItemType[]): void => {
-        console.log('items: ', items);
         props.onValueChanged(id, items);
     };
 
@@ -38,6 +37,7 @@ const FormPage = (props: FormPageProps): React.ReactElement => {
                     onAdd={onDeleteOrAddItem}
                     onDelete={onDeleteOrAddItem}
                     id={formField.id}
+                    initialValue={formField.initialValue}
                 />}
             </div>)
         })}

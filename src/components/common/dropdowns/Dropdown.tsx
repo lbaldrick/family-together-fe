@@ -34,7 +34,7 @@ const Dropdown = (props: InputProps): React.ReactElement => {
                 props.items?.map((item) => {
                     return <li key={item.id}
                                className={`dropdown_list_item ${item.label === value ? 'dropdown_list_item--selected' : '' }`}
-                               onClick={(): void => onChange(item.id, item.value, item.label)}>
+                               onClick={(): void => onChange(props.id, item.value, item.label)}>
                         {item.label}
                     </li>
                 })

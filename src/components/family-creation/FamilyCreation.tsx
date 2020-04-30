@@ -5,6 +5,7 @@ import './family-creation.scss';
 import {FormList} from "../common/form/FormList";
 import Dropdown from "../common/dropdowns/Dropdown";
 import {FamilyPositionsEnum} from "../../state/model/Family";
+import {saveFamily, useFamiliesDispatch} from "../../state/context/families/FamiliesContext";
 
 const formPages: (FormFieldType | FormListType)[][] = [
     [
@@ -92,6 +93,7 @@ const formPages: (FormFieldType | FormListType)[][] = [
             id: 'children',
             component: FormList,
             header: 'Enter children\'s details:',
+            initialValue: [],
             formFields: [
                 {
                     id: 'childFirstName',
@@ -115,7 +117,7 @@ const formPages: (FormFieldType | FormListType)[][] = [
                     id: 'childDob',
                     component: ValueInput,
                     isRequired: true,
-                    type: "text",
+                    type: "date",
                     placeholder: "Enter Date of Birth",
                     objectType: 'FormField',
 
@@ -129,6 +131,7 @@ const formPages: (FormFieldType | FormListType)[][] = [
             id: 'otherFamilyMembers',
             component: FormList,
             header: 'Enter family members details:',
+            initialValue: [],
             formFields: [
                 {
                     id: 'firstName',
@@ -210,7 +213,10 @@ const FamilyCreationContainer = (): React.ReactElement => {
 
 const FamilyCreation = (): React.ReactElement => {
     return <div className={"family-creation"}>
-        <StandardForm stepHeaderLabels={['Your Details', 'Children\'s Details', 'Other Family Member\'s Details']} formPages={formPages} currentFormIndex={0} />
+        <StandardForm onFormFinished={(result: any): void => saveFamily(useFamiliesDispatch, result)}
+                      stepHeaderLabels={['Your Details', 'Children\'s Details', 'Other Family Member\'s Details']}
+                      formPages={formPages}
+                      currentFormIndex={0} />
     </div>
 };
 

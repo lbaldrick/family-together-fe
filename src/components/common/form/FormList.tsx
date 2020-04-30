@@ -9,6 +9,7 @@ export interface FormListProps {
     header?: string;
     onAdd: (id: string, items: FormListItemType[]) => void;
     onDelete: (id: string, items: FormListItemType[]) => void;
+    initialValue: FormListItemType[];
 }
 
 export type FormListItemType = {
@@ -36,7 +37,7 @@ const formListItems = (items: FormListItemType[], onDeleteItem: (index: number) 
 };
 
 export const FormList = (props: FormListProps): React.ReactElement => {
-    const [items, setItems] = useState<FormListItemType[]>([]);
+    const [items, setItems] = useState<FormListItemType[]>(props.initialValue);
     const [values, setValues] = useState<FormListItemType>({});
     const [formComplete, setFormComplete] = useState<boolean>(() => {
         return !props.formFields.filter(({isRequired}) => isRequired).length

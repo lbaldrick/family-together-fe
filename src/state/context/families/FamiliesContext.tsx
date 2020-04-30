@@ -1,6 +1,5 @@
 import * as React from 'react'
 import {FamiliesAction, FamiliesActionsEnum} from "./FamiliesActions";
-import {useEffect} from "react";
 import {AsyncDataStateEnum} from "../../UiStates";
 import superagent from "superagent";
 import {Family} from "../../model/Family";
@@ -8,9 +7,7 @@ import {Family} from "../../model/Family";
 type Dispatch = (action: FamiliesAction) => void
 
 export interface State {
-    currentFamiliesAction?: FamiliesActionsEnum;
     currentFamilyActionState?: AsyncDataStateEnum;
-    families?: Family[];
     currentFamily?: Partial<Family>;
 }
 
@@ -56,10 +53,10 @@ const useFamiliesDispatch = (): Dispatch => {
     return context;
 };
 
-const fetchFamily = async (dispatch: Dispatch, userId: string): Promise<void>  => {
+const fetchFamily = async (dispatch: Dispatch): Promise<void>  => {
     dispatch({type: AsyncDataStateEnum.STARTED});
     try {
-        const response = await superagent.get('/mocks/user.json').query({ userId });
+        const response = await superagent.get('/mocks/family.json');
         const {id} = response.body;
         dispatch({type: AsyncDataStateEnum.COMPLETED_SUCCESS, payload: {
                 id,
@@ -69,27 +66,18 @@ const fetchFamily = async (dispatch: Dispatch, userId: string): Promise<void>  =
     }
 };
 
-const fetchFamilies = async (dispatch: Dispatch, userId: string): Promise<void>  => {
+//TODO save to database and make this async
+const saveFamily = (dispatch: Dispatch, payload: any): void => {
     dispatch({type: AsyncDataStateEnum.STARTED});
     try {
-        const response = await superagent.get('/mocks/user.json').query({ userId });
-        const {id} = response.body;
-        dispatch({type: AsyncDataStateEnum.COMPLETED_SUCCESS, payload: {
-                id,
-            }})
+        dispatch({type: AsyncDataStateEnum.COMPLETED_SUCCESS, payload})
     } catch (error) {
         dispatch({type: AsyncDataStateEnum.COMPLETED_FAIL})
     }
 };
 
-const familiesProvider = ({children}: FamiliesProviderProps): React.ReactNode => {
+const FamiliesProvider = ({children}: FamiliesProviderProps): React.ReactElement => {
     const [state, dispatch] = React.useReducer(familiesReducer, {});
-
-    useEffect(() => {
-        // (async function asyncCall(): Promise<null> {
-        //     return await fetchUser();
-        // })();
-    }, []);
 
     return (
         <FamiliesStateContext.Provider value={state}>
@@ -101,4 +89,4 @@ const familiesProvider = ({children}: FamiliesProviderProps): React.ReactNode =>
     )
 };
 
-export {familiesProvider, useFamiliesState, useFamiliesDispatch, fetchFamily, fetchFamilies}
+export {FamiliesProvider, useFamiliesState, useFamiliesDispatch, fetchFamily, saveFamily}

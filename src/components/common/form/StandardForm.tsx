@@ -26,12 +26,14 @@ export interface FormListType {
     objectType: 'FormList';
     component: React.FC<FormListProps>;
     header?: string;
+    initialValue: FormListItemType[];
 }
 
 type FormProps = {
     formPages: (FormFieldType | FormListType)[][];
     currentFormIndex: number;
     stepHeaderLabels?: string[];
+    onFormFinished: (result: any) => void;
 }
 
 
@@ -113,14 +115,9 @@ const StandardForm = (props: FormProps): React.ReactElement => {
             formFieldsState[id] = {value, isValid: isFieldValid};
             const pageField = formPagesState[currentIndex].find(pageField => pageField.id === id);
 
-            if (Array.isArray(pageField)) {
+            if (pageField && Array.isArray(value)) {
+                pageField.initialValue = value;
 
-                for (let x = 0; x < pageField.length; x++) {
-                    if (pageField[x].id === id) {
-                        pageField[x].initialValue = value;
-                        break;
-                    }
-                }
             } else {
                 if ( pageField && instanceOfFormFieldType(pageField) && (typeof value === 'string' || typeof value === 'number') ) {
                     pageField.initialValue = value;
@@ -154,7 +151,8 @@ const StandardForm = (props: FormProps): React.ReactElement => {
     };
 
     const onFinish = (): void => {
-        console.log("Finished"); // save the form data
+        console.log('on finish', formFieldsState);
+        props.onFormFinished(formFieldsState); // save the form data
     };
 
     return <div className={"form"}>
