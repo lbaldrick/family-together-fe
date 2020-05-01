@@ -1,5 +1,27 @@
-.calendar-controls {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+.calendar {
+  &_dates {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 90%;
+  }
+
+  &-day {
+    width: 10%;
+    min-height: 5rem;
+    min-width: 5em;
+    margin: .5em;
+    padding: .2em;
+    background-color: #b9b5b582;
+    &:hover {
+      cursor: pointer;
+      opacity: .5;
+    }
+  }
+
+  &-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 }

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import CalendarControls from "./CalenderControls";
 import {getDay, getDaysInMonth, getYear} from "date-fns";
+import CalendarDay from "./CalendarDay";
 
 interface CalendarEventType {
     id: string;
@@ -175,10 +176,17 @@ const Calendar = ({events}: CalendarProps): React.ReactElement => {
         console.log('value', value);
         setYear(value);
     };
+
+    const onDayClick = (id: string) => {
+        console.log(id);
+    };
+
     return <div className={'calendar'}>
         <CalendarControls monthValues={monthValues} yearValues={yearValues} initialMonthValueIndex={2} initialYearValueIndex={0} onMonthChange={onMonthChange} onYearChange={onYearChange}/>
         <div className={'calendar_dates'}>
-            {getDaysForMonth(year, month).map(({dayLabel}) => dayLabel)}
+            {getDaysForMonth(year, month).map(({dayLabel, dayOfMonth}) => {
+                return <CalendarDay key={dayOfMonth + '-' + year} id={dayOfMonth + '-' + year} dayLabel={dayLabel} dayOfMonth={dayOfMonth} events={[]} onDayClick={onDayClick}/>
+            })}
         </div>
     </div>
 };
