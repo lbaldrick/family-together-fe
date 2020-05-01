@@ -1,11 +1,12 @@
-import React from "react";
+import React, {Dispatch} from "react";
 import StandardForm, {FormFieldType, FormListType} from "../common/form/StandardForm";
 import ValueInput from "../common/inputs/ValueInput";
 import './family-creation.scss';
 import {FormList} from "../common/form/FormList";
 import Dropdown from "../common/dropdowns/Dropdown";
 import {FamilyPositionsEnum} from "../../state/model/Family";
-import {FamiliesDispatchContext, FamiliesStateContext, saveFamily} from "../../state/context/families/FamiliesContext";
+import {FamiliesDispatch, FamiliesDispatchContext, saveFamily} from "../../state/context/families/FamiliesContext";
+import history from "../../utils/history";
 
 const formPages: (FormFieldType | FormListType)[][] = [
     [
@@ -211,10 +212,15 @@ const FamilyCreationContainer = (): React.ReactElement => {
     return <FamilyCreation/>
 };
 
+const onFormFinished = (dispatch: FamiliesDispatch | undefined, result: any): void => {
+    dispatch && saveFamily(dispatch, result);
+    history.push('/dashboard');
+};
+
 const FamilyCreation = (): React.ReactElement => {
     const familyDispatchContext = React.useContext(FamiliesDispatchContext);
     return <div className={"family-creation"}>
-        <StandardForm onFormFinished={(result: any): void => familyDispatchContext && saveFamily(familyDispatchContext, result)}
+        <StandardForm onFormFinished={(result: any) => onFormFinished(familyDispatchContext, result)}
                       stepHeaderLabels={['Your Details', 'Children\'s Details', 'Other Family Member\'s Details']}
                       formPages={formPages}
                       currentFormIndex={0} />

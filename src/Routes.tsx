@@ -13,8 +13,9 @@ import NavigationBar from "./components/navigation-bar/NavigationBar";
 import {useAuth0} from "./Auth";
 import MainLayout from "./components/layouts/MainLayout";
 import MainLayoutWithSideMenu from "./components/layouts/MainLayoutWithSideMenu";
-import FamilySetup from "./components/family-setup/FamilySetup";
 import FamilyCreationContainer from "./components/family-creation/FamilyCreation";
+import Drawer from "./components/common/drawer/Drawer";
+import Calendar from "./components/common/calendar/Calendar";
 
 const getPublic = () => {
     return <div>Public</div>
@@ -27,7 +28,7 @@ const Routes = () => {
             <Switch>
                 <Route exact path="/"  component={() => <MainLayout mainComponent={<FamilyCreationContainer/>}/>}/>
                 <PrivateRoute path="/authorized" component={() => <MainLayout mainComponent={<FamilyCreationContainer/>}/>}/>
-                <PrivateRoute path="/home" component={() => <FamilyCreationContainer/>}/>
+                <PrivateRoute path="/dashboard" component={() => <MainLayoutWithSideMenu leftSideContent={<Drawer />} mainContent={<Calendar/>}/>}/>
                 <PrivateRoute path="/create-family" component={() => <MainLayout mainComponent={<FamilyCreationContainer/>}/>}/>
                 <PrivateRoute path="/messages" component={getPublic}/>
             </Switch>

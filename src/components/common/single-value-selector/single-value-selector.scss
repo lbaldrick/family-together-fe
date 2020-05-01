@@ -1,0 +1,39 @@
+.single-value-selector {
+
+  display: flex;
+  flex-direction: row;
+
+  &_label {
+    width: 5em;
+    text-align: center;
+  }
+
+  &.arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-left: 10px solid #007100;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .5;
+    }
+  }
+
+  &.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-right: 10px solid #007100;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .5;
+    }
+  }
+}
+

@@ -1,10 +1,10 @@
 import * as React from 'react'
-import {FamiliesAction, FamiliesActionsEnum} from "./FamiliesActions";
+import {FamiliesAction} from "./FamiliesActions";
 import {AsyncDataStateEnum} from "../../UiStates";
 import superagent from "superagent";
 import {Family} from "../../model/Family";
 
-type Dispatch = (action: FamiliesAction) => void
+export type FamiliesDispatch = (action: FamiliesAction) => void
 
 export interface State {
     currentFamilyActionState?: AsyncDataStateEnum;
@@ -17,7 +17,7 @@ type FamiliesProviderProps = {children: React.ReactNode}
 
 const FamiliesStateContext = React.createContext<State>({});
 
-const FamiliesDispatchContext = React.createContext<Dispatch | undefined>(undefined);
+const FamiliesDispatchContext = React.createContext<FamiliesDispatch | undefined>(undefined);
 
 const familiesReducer = (state: State, action: FamiliesAction): State => {
     switch (action.type) {
@@ -39,7 +39,7 @@ const familiesReducer = (state: State, action: FamiliesAction): State => {
     }
 };
 
-const fetchFamily = async (dispatch: Dispatch): Promise<void>  => {
+const fetchFamily = async (dispatch: FamiliesDispatch): Promise<void>  => {
     try {
         const response = await superagent.get('/mocks/family.json');
         const {id} = response.body;
@@ -52,7 +52,7 @@ const fetchFamily = async (dispatch: Dispatch): Promise<void>  => {
 };
 
 //TODO save to database and make this async
-const saveFamily = (dispatch: Dispatch, payload: any): void => {
+const saveFamily = (dispatch: FamiliesDispatch, payload: any): void => {
     try {
         dispatch({type: AsyncDataStateEnum.COMPLETED_SUCCESS, payload})
     } catch (error) {
